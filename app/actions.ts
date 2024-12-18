@@ -50,7 +50,7 @@ export const signInAction = async (formData: FormData) : Promise<void> => {
   });
 
   if (error) {
-    return encodedRedirect("error", "/sign-in", error.message);
+    return encodedRedirect("error", "/brirose-sign-in", error.message);
   }
 
   return redirect("/brirose-admin-panel");
@@ -130,5 +130,5 @@ export const resetPasswordAction = async (formData: FormData) => {
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  return redirect("/brirose-sign-in");
 };

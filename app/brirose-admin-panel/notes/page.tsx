@@ -9,7 +9,7 @@ export default async function ProtectedPage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/sign-in");
+    return redirect("/brirose-sign-in");
   }
 
   const { data: notes } = await supabase.from("notes").select();
