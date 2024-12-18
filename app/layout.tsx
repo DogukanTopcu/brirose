@@ -10,7 +10,7 @@ const defaultUrl = process.env.VERCEL_URL
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Brirose",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  description: "Discover timeless elegance with Brirose, a premier wedding dress company offering handcrafted gowns designed to make every bride's dream come true.",
 };
 
 export default function RootLayout({
