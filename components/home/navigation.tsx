@@ -4,6 +4,7 @@ import { Instagram, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/language-context'
 import { LanguageSwitcher } from './language-btn'
+import Image from 'next/image'
 
 interface NavigationProps {
   currentSection: string
@@ -16,17 +17,20 @@ export function Navigation({ currentSection }: NavigationProps) {
     { id: 'section-1', label: t('nav.home') },
     { id: 'section-2', label: t('nav.collection') },
     { id: 'section-3', label: t('nav.about') },
+    { id: 'section-4', label: t('nav.about') },
+    { id: 'section-5', label: t('nav.about') },
+    { id: 'section-6', label: t('nav.about') },
   ]
 
   return (
     <>
       {/* Logo and Menu */}
-      <div className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between p-6  md:p-12">
+      <div className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between p-6 md:p-12">
         <Link href="/" className="text-2xl font-bold text-white">
-          Brirose 🌹
+          <Image src="/logo.svg" alt="Logo" width={100} height={100} />
         </Link>
         <div className='flex justify-center items-center gap-4'>
-            <button className="text-white">
+            <button className="text-black">
             <Menu className="h-6 w-6" />
             </button>
             <LanguageSwitcher />
@@ -34,7 +38,7 @@ export function Navigation({ currentSection }: NavigationProps) {
       </div>
 
       {/* Section Indicators */}
-      <div className="fixed left-8 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 mix-blend-difference md:flex">
+      <div className="fixed left-8 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 mix-blend-difference md:flex justify-center items-center">
         {sections.map((section) => (
           <a
             key={section.id}

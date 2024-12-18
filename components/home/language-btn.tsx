@@ -8,7 +8,7 @@ export function LanguageSwitcher() {
 
   return (
     <Button
-        className='text-white'
+        className='text-black'
         variant="link"
         size="sm"
         onClick={() => setLanguage(language === 'en' ? 'tr' : 'en')}

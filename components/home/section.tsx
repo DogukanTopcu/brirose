@@ -45,7 +45,7 @@ export function Section({
                 {t(titleKey)}
               </h2>
               {subtitleKey && (
-                <p className="mt-6 text-lg leading-8 text-muted-foreground">
+                <p className="mt-6 text-lg leading-8 md:text-muted-foreground text-white/75">
                   {t(subtitleKey)}
                 </p>
               )}
