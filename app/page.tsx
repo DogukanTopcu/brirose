@@ -1,16 +1,62 @@
-import Hero from "@/components/hero";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+'use client'
 
-export default async function Index() {
+import { useState, useEffect } from 'react'
+import { Section } from '@/components/home/section'
+import { Navigation } from '@/components/home/navigation'
+
+export default function Home() {
+  const [currentSection, setCurrentSection] = useState('section-1')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id) {
+            setCurrentSection(entry.target.id)
+          }
+        })
+      },
+      {
+        threshold: 0.5,
+      }
+    )
+
+    document.querySelectorAll('section[id]').forEach((section) => {
+      observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <>
-      <Hero />
-      <main className="flex-1 flex flex-col gap-6 px-4">
-        <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
+      <main className="h-screen w-full overflow-y-auto snap-y snap-mandatory bg-black text-white">
+        <Navigation currentSection={currentSection} />
+        
+        <Section
+          id="section-1"
+          titleKey="section1.title"
+          subtitleKey="section1.subtitle"
+          buttonTextKey="section1.button"
+          imageSrc1="/img1.jpg"
+          imageSrc2="/img2.jpg"
+        />
+        <Section
+          id="section-2"
+          titleKey="section2.title"
+          subtitleKey="section2.subtitle"
+          buttonTextKey="section2.button"
+          imageSrc1="/img1.jpg"
+          imageSrc2="/img2.jpg"
+        />
+        <Section
+          id="section-3"
+          titleKey="section3.title"
+          subtitleKey="section3.subtitle"
+          buttonTextKey="section3.button"
+          imageSrc1="/img1.jpg"
+          imageSrc2="/img2.jpg"
+        />
       </main>
-    </>
-  );
+  )
 }
+
